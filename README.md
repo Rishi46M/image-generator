@@ -2,10 +2,17 @@
 
 A full-stack AI-powered image generation application with RAG (Retrieval-Augmented Generation) capabilities. The application intelligently enhances user prompts using a knowledge base before generating high-quality images.
 
+
+
 !\[Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square\&logo=next.js)
+
 !\[TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square\&logo=typescript)
+
 !\[Tailwind CSS](https://img.shields.io/badge/Tailwind\_CSS-4-38B2AC?style=flat-square\&logo=tailwind-css)
+
 !\[Prisma](https://img.shields.io/badge/Prisma-6-2D3748?style=flat-square\&logo=prisma)
+
+## 
 
 ## ✨ Features
 
@@ -73,7 +80,7 @@ npm install
 Create a `.env` file in the root directory:
 
 ```env
-DATABASE\_URL="file:./db/custom.db"
+DATABASE\\\\\\\_URL="file:./db/custom.db"
 ```
 
 ### Initialize Database
@@ -148,7 +155,7 @@ Generates an image with RAG enhancement.
     "originalPrompt": "string",
     "enhancedPrompt": "string",
     "imageData": "base64",
-    "retrievedContext": \["string"],
+    "retrievedContext": \\\\\\\["string"],
     "size": "string",
     "createdAt": "date"
   }
@@ -158,7 +165,7 @@ Generates an image with RAG enhancement.
 ### Get Images
 
 ```
-GET /api/images?limit=20\&offset=0
+GET /api/images?limit=20\\\\\\\&offset=0
 ```
 
 Retrieves paginated list of generated images.

@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Knowledge base for RAG retrieval - stores styles, prompts, and context
+model KnowledgeEntry {
+  id          String   @id @default(cuid())
+  category    String   // e.g., "style", "subject", "mood", "technique"
+  title       String
+  description String
+  keywords    String   // Comma-separated keywords for matching
+  promptHint  String   // Text to enhance prompts with
+  examples    String?  // Example prompts (JSON array)
+  embedding   String?  // For future vector search
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([category])
+  @@index([title])
+}
+
+// Generated images with full metadata
+model GeneratedImage {
+  id              String   @id @default(cuid())
+  originalPrompt  String   // User's original prompt
+  enhancedPrompt  String   // RAG-enhanced prompt
+  imageData       String   // Base64 encoded image
+  size            String   // e.g., "1024x1024"
+  retrievedContext String? // JSON of retrieved knowledge entries
+  createdAt       DateTime @default(now())
+
+  @@index([createdAt(sort: Desc)])
+}
+
+// Prompt templates for quick start
+model PromptTemplate {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  template    String   // Template with placeholders like {{subject}}
+  category    String
+  isFavorite  Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([category])
+  @@index([isFavorite])
+}

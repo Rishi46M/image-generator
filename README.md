@@ -68,7 +68,7 @@ npm install
 Create a `.env` file in the root directory:
 
 ```env
-DATABASE\\\\\\\_URL="file:./db/custom.db"
+DATABASE\_URL="file:./db/custom.db"
 ```
 
 ### Initialize Database
@@ -143,7 +143,7 @@ Generates an image with RAG enhancement.
     "originalPrompt": "string",
     "enhancedPrompt": "string",
     "imageData": "base64",
-    "retrievedContext": \\\\\\\["string"],
+    "retrievedContext": "string",
     "size": "string",
     "createdAt": "date"
   }
@@ -153,7 +153,7 @@ Generates an image with RAG enhancement.
 ### Get Images
 
 ```
-GET /api/images?limit=20\\\\\\\&offset=0
+GET /api/images?limit=20\&offset=0
 ```
 
 Retrieves paginated list of generated images.
